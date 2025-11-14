@@ -1,0 +1,6 @@
+@NameRandomizer_HostAddress = http://localhost:5014
+
+GET {{NameRandomizer_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
