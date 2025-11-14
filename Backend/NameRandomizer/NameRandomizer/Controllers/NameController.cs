@@ -1,3 +1,4 @@
+using Entites;
 using Entites.Models;
 using Logic;
 using Microsoft.AspNetCore.Mvc;
@@ -16,9 +17,9 @@ public class NameController : ControllerBase
     }
 
     [HttpPost]
-    public void Create([FromBody] string name)
+    public void Create([FromBody] NameCreateDto dto)
     {
-        logic.Create(name);
+        logic.Create(dto);
     }
 
     [HttpGet]

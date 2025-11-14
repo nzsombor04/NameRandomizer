@@ -1,3 +1,4 @@
+using System.Linq;
 using Entites.Models;
 
 namespace Data;
