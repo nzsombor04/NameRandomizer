@@ -1,13 +1,15 @@
-﻿FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+﻿FROM mcr.microsoft.com/dotnet/aspnet:8.0-bookworm-slim AS base
 USER $APP_UID
 WORKDIR /app
 EXPOSE 8080
-EXPOSE 8081
 
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:8.0-bookworm-slim AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["NameRandomizer/NameRandomizer.csproj", "NameRandomizer/"]
+COPY ["Entites/Entites.csproj", "Entites/"]
+COPY ["Data/Data.csproj", "Data/"]
+COPY ["Logic/Logic.csproj", "Logic/"]
 RUN dotnet restore "NameRandomizer/NameRandomizer.csproj"
 COPY . .
 WORKDIR "/src/NameRandomizer"
