@@ -1,4 +1,8 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using Data;
+using Entites;
 using Entites.Models;
 
 namespace Logic;
@@ -12,9 +16,9 @@ public class NameLogic
         this.repo = repo;
     }
 
-    public void Create(string name)
+    public void Create(NameCreateDto dto)
     {
-        var nameToAdd = new NameModel(name);
+        var nameToAdd = new NameModel(dto.Name);
         repo.Create(nameToAdd);
     }
 

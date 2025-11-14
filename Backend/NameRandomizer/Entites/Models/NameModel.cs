@@ -1,3 +1,5 @@
+using System;
+
 namespace Entites.Models;
 
 public class NameModel

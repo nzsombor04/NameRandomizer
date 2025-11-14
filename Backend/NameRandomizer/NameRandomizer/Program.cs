@@ -10,7 +10,21 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
+        builder.WebHost.UseUrls("http://0.0.0.0:5014");
+        
         // Add services to the container.
+        var corsUrl = builder.Configuration["Cors"];
+
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy("AllowAngularApp", policy =>
+            {
+                policy.WithOrigins("http://localhost:4200")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+            });
+        });
+        
         builder.Services.AddControllers();
         builder.Services.AddAuthorization();
 
@@ -33,6 +47,8 @@ public class Program
             app.UseSwaggerUI();
         }
 
+        app.UseCors("AllowAngularApp");
+        
         app.UseHttpsRedirection();
 
         app.UseAuthorization();
