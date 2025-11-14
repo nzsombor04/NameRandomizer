@@ -1,0 +1,12 @@
+/Users/nagyzsombor/Documents/NameRandomizer/Backend/NameRandomizer/Entites/bin/Debug/net8.0/Entites.deps.json
+/Users/nagyzsombor/Documents/NameRandomizer/Backend/NameRandomizer/Entites/bin/Debug/net8.0/Entites.dll
+/Users/nagyzsombor/Documents/NameRandomizer/Backend/NameRandomizer/Entites/bin/Debug/net8.0/Entites.pdb
+/Users/nagyzsombor/Documents/NameRandomizer/Backend/NameRandomizer/Entites/obj/Debug/net8.0/Entites.GeneratedMSBuildEditorConfig.editorconfig
+/Users/nagyzsombor/Documents/NameRandomizer/Backend/NameRandomizer/Entites/obj/Debug/net8.0/Entites.AssemblyInfoInputs.cache
+/Users/nagyzsombor/Documents/NameRandomizer/Backend/NameRandomizer/Entites/obj/Debug/net8.0/Entites.AssemblyInfo.cs
+/Users/nagyzsombor/Documents/NameRandomizer/Backend/NameRandomizer/Entites/obj/Debug/net8.0/Entites.csproj.CoreCompileInputs.cache
+/Users/nagyzsombor/Documents/NameRandomizer/Backend/NameRandomizer/Entites/obj/Debug/net8.0/Entites.sourcelink.json
+/Users/nagyzsombor/Documents/NameRandomizer/Backend/NameRandomizer/Entites/obj/Debug/net8.0/Entites.dll
+/Users/nagyzsombor/Documents/NameRandomizer/Backend/NameRandomizer/Entites/obj/Debug/net8.0/refint/Entites.dll
+/Users/nagyzsombor/Documents/NameRandomizer/Backend/NameRandomizer/Entites/obj/Debug/net8.0/Entites.pdb
+/Users/nagyzsombor/Documents/NameRandomizer/Backend/NameRandomizer/Entites/obj/Debug/net8.0/ref/Entites.dll
