@@ -10,7 +10,7 @@ RUN npm run build
 FROM nginx:1.17.1-alpine
 RUN apk add --no-cache gettext
 COPY Frontend/nameRandomizer/nginx.conf /etc/nginx/nginx.conf
-COPY --from=build /usr/src/app/dist/nameRandomizer/browser /usr/share/nginx/html
+COPY --from=build /usr/src/app/dist/name-randomizer/browser /usr/share/nginx/html
 COPY Frontend/nameRandomizer/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 ENV BACKEND_URL=""
