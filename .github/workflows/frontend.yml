@@ -37,4 +37,4 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.SSH_PASS }}
           script: |
-            ./backend_refresh.sh
+            ./frontend_refresh.sh
