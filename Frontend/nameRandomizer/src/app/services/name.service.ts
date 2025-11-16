@@ -3,6 +3,7 @@ import { BehaviorSubject, tap } from 'rxjs';
 import { Name } from '../models/name.model';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment.development';
+import { ConfigService } from './config.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,19 +15,22 @@ export class NameService {
   private _name$ = new BehaviorSubject<Name>(new Name())
   public name$ = this._name$.asObservable()
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient, private configService: ConfigService) { }
+
+  public init() {
+    this.configService.load()
     this.getNames()
   }
 
   public getNames() {
-    this.http.get<Name[]>(`${environment.baseApi}/api/Name`)
+    this.http.get<Name[]>(`${this.configService.cfg.backendUrl}/api/Name`)
       .pipe(
         tap(res => this._names$.next(res))
       ).subscribe();
   }
 
   public addName(name: string) {
-    this.http.post(`${environment.baseApi}/api/Name`, name).subscribe({
+    this.http.post(`${this.configService.cfg.backendUrl}/api/Name`, name).subscribe({
       next: () => {
         this.getNames()
       },
@@ -37,7 +41,7 @@ export class NameService {
   }
 
   public deleteName(id: string) {
-    this.http.delete(`${environment.baseApi}/api/Name?id=` + id).subscribe({
+    this.http.delete(`${this.configService.cfg.backendUrl}/api/Name?id=` + id).subscribe({
       next: () => {
         this.getNames()
       },
@@ -48,7 +52,7 @@ export class NameService {
   }
 
   public getRandomName() {
-    this.http.get<Name>(`${environment.baseApi}/api/Name/random`)
+    this.http.get<Name>(`${this.configService.cfg.backendUrl}/api/Name/random`)
       .pipe(
         tap(res => this._name$.next(res))
       ).subscribe()

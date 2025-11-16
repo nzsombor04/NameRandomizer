@@ -17,6 +17,7 @@ export class NamelistComponent implements OnInit{
   constructor (private nameService: NameService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
+    this.nameService.init()
     this.names$ = this.nameService.names$
 
     this.form = this.fb.group({
