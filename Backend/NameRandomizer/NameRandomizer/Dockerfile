@@ -6,23 +6,21 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0-bookworm-slim AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 
-# COPY a .csproj fájlokat a helyes útvonalból
-COPY ["Backend/NameRandomizer/NameRandomizer.csproj", "NameRandomizer/"]
-COPY ["Backend/Entites/Entites.csproj", "Entites/"]
-COPY ["Backend/Data/Data.csproj", "Data/"]
-COPY ["Backend/Logic/Logic.csproj", "Logic/"]
+# Másoljuk az egész NameRandomizer projektet egyszerre
+COPY Backend/NameRandomizer/ ./NameRandomizer/
 
-RUN dotnet restore "NameRandomizer/NameRandomizer.csproj"
+WORKDIR /src/NameRandomizer/NameRandomizer
 
-# Minden többi forrás bemásolása
-COPY Backend/ ./Backend/
+# Restore
+RUN dotnet restore
 
-WORKDIR "/src/Backend/NameRandomizer"
-RUN dotnet build "./NameRandomizer.csproj" -c $BUILD_CONFIGURATION -o /app/build
+# Build
+RUN dotnet build -c $BUILD_CONFIGURATION -o /app/build
 
+# Publish
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./NameRandomizer.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app

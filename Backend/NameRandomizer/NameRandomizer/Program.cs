@@ -19,7 +19,7 @@ public class Program
         {
             options.AddPolicy("AllowAngularApp", policy =>
             {
-                policy.WithOrigins("http://localhost:4200")
+                policy.WithOrigins(corsUrl)
                     .AllowAnyHeader()
                     .AllowAnyMethod();
             });
